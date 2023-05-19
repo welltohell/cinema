@@ -14,7 +14,7 @@ require "header.php";
         //check url and display alert
         if (window.location.href == "http://localhost/cinema/index.php?login=success") {
             Toastify({
-                text: "Вы успешно вошли!",
+                text: "Вы успешно вошл!",
                 duration: 3000,
                 newWindow: true,
                 close: false,
