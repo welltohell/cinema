@@ -16,9 +16,9 @@ if ($result->num_rows > 0) {
     foreach ($result as $row) {
 ?>
 
-        <div class="">
+        <div class="rounded">
             <div class="relative h-[100%]">
-                <?php echo '<img src="data:image;base64,' . base64_encode($row['movieImage']) . '" class="card-img-top h-[100%]">'; ?>
+                <?php echo '<img src="data:image;base64,' . base64_encode($row['movieImage']) . '" class="card-img-top h-[100%] rounded">'; ?>
                 <div class="absolute flex flex-col inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity duration-300">
                     <p class="text-white text-2xl font-bold w-full p-2 text-left"><?php echo $row['movieName']; ?></p>
                     <p class="text-white text-sm w-full p-2 text-left"><?php echo $row['movieDescription']; ?></p>
