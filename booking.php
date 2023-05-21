@@ -10,28 +10,19 @@ require "header.php"
 
     if ($url === "http://localhost/cinema/booking.php?TicketBooked=success") {
 
-        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                Ticket was booked successfully!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <span class="font-medium">Ваши места успешно забронированы!</span>
             </div>';
     } else if ($url === "http://localhost/cinema/booking.php?TicketBooked=failed") {
 
-        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Failed to book ticket, Unknown error occured!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+        echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <span class="font-medium">Не удалось забронировать билет, произошла неизвестная ошибка!</span>
+      </div>';
     } else if ($url === "http://localhost/cinema/booking.php?TicketBooked=null") {
 
-        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Failed to book ticket, no seat was selected!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+        echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <span class="font-medium">Не удалось забронировать билет, вы не выбрали места!</span>
+      </div>';
     }
 
     ?>
