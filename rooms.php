@@ -47,9 +47,9 @@ require "header.php";
 
     ?>
 
-    <div class="jumbotron" style="background-color: #333333; margin-top: -30px; margin-bottom: -80px;">
-      <h1 class="title" style="text-align: center;">Opened Rooms</h1>
-      <div class="jumbotron" style="background-color: #333333; margin-top: -30px;">
+    <div class="mt-4">
+      <h1 class="title uppercase text-[21px] italic font-bold">Доступные залы</h1>
+      <div class="mt-4 grid gap-4 grid-cols-3">
 
         <?php
 
@@ -66,29 +66,29 @@ require "header.php";
 
         ?>
 
-            <div class="card mb-3" style="max-width: 650px; margin: 0 auto; background-color: #666666; color: white;">
-              <?php echo '<img src="data:image;base64,' . base64_encode($row['room_image']) . '" class="card-img-top">'; ?>
-              <div class="card-body">
-                <h5 class="card-title"><?php echo $row['roomName']; ?></h5>
-                <p class="card-text"><?php echo $row['roomDescription']; ?></p>
-                <p class="card-text"><strong> SEATS: &nbsp;
-                 <?php echo $row['seat_column'] * $row['seat_row']; //multiplying col and row to find total seats?></strong></p>
-
-
-                <?php
+            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <?php echo '<img src="data:image;base64,' . base64_encode($row['room_image']) . '" class="w-full">'; ?>
+              <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2"><?php echo $row['roomName']; ?></div>
+                <p class="text-gray-700 text-base">
+                  <?php echo $row['roomDescription']; ?>
+                </p>
+              </div>
+              <div class="px-6 pt-4 pb-2">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><?php echo $row['seat_column'] * $row['seat_row'];?> мест</span>
+              </div>
+              <?php
                 if (isset($_SESSION['userId'])) { //Check first if someone is logged in
                   if ($_SESSION['userRole'] == "Administrator") { //than check who logged in
                 ?>
-                    <!-- Show buttons only to administrator-->
-                    <a href="createRoom.php?editRoom=<?php echo $row['room_id']; ?>" class="btn btn-info">Edit</a>
-                    <a href="classes/rooms.class.php?deleteRoom=<?php echo $row['room_id']; ?>" class="btn btn-danger">Delete</a>
-                <?php
+              <div class="px-6 flex gap-2 mb-2">
+                <a href="createRoom.php?editRoom=<?php echo $row['room_id']; ?>" class="transition text-slate-400 border border-blue-200 px-2 py-1 rounded hover:text-black">Изменить</a>
+                <a href="classes/rooms.class.php?deleteRoom=<?php echo $row['room_id']; ?>" class="transition border text-slate-400 border-red-200 px-2 py-1 rounded hover:text-black">Удалить</a>
+              </div>
+              <?php
                   }
                 }
                 ?>
-
-
-              </div>
             </div>
 
         <?php

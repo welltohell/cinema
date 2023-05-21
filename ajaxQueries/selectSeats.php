@@ -6,7 +6,7 @@ if(isset($_GET['room'])){
 
     if($_GET['room'] == "nothing"){ //if the room has value nothing display a message
 
-        echo "<p>Select a movie to display the available seats!</p>"; //we need that to avoid a warning of null value on $_GET['room']
+        echo '<p class="mt-4">Выберите фильм, чтобы отобразить места!</p>'; //we need that to avoid a warning of null value on $_GET['room']
 
     } else { //else display the seats of the room that was selected
 

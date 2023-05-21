@@ -16,15 +16,17 @@ if ($result->num_rows > 0) {
     foreach ($result as $row) {
 ?>
 
-        <div class="rounded">
+        <div class="rounded cursor-pointer">
             <div class="relative h-[100%]">
                 <?php echo '<img src="data:image;base64,' . base64_encode($row['movieImage']) . '" class="card-img-top h-[100%] rounded">'; ?>
-                <div class="absolute flex flex-col inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity duration-300">
-                    <p class="text-white text-2xl font-bold w-full p-2 text-left"><?php echo $row['movieName']; ?></p>
-                    <p class="text-white text-sm w-full p-2 text-left"><?php echo $row['movieDescription']; ?></p>
+                <div class="absolute flex flex-col inset-0 bg-black/80 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                    <p class="text-white text-[18px] font-bold w-full p-2 text-left"><?php echo $row['movieName']; ?></p>
+                    <p class="text-white text-sm w-full px-2 text-left"><?php echo $row['startDate']; ?></p>
+                    <p class="text-white text-sm w-full px-2 text-left"><?php echo $row['startHours']; ?></p>
+                    <p class="text-white text-[12px] w-full p-2 text-left"><?php echo $row['movieDescription']; ?></p>
                     <?php
                     if (isset($_SESSION['userId'])) {
-                        echo '<a href="booking.php?scheduleID='.$row['schedule_id'].'" class="absolute m-2 bottom-0 btn btn-primary">Book now</a>';
+                        echo '<a href="booking.php?scheduleID='.$row['schedule_id'].'" class="absolute m-2 bottom-0 p-2 bg-[#73a5ff] text-sm rounded text-white">Бронь</a>';
                     }
                     ?>
                 </div>

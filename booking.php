@@ -37,7 +37,7 @@ require "header.php"
     ?>
 
 
-    <div class="jumbotron" style="background-color: #333333; ">
+    <div class="jumbotron">
 
         <?php
         //check which button was pressed and display form
@@ -57,8 +57,8 @@ require "header.php"
             $result = $conn->query($query);
             $row = mysqli_fetch_assoc($result); ?>
 
-            <div style="color: white;">
-                <h1 style="text-align: center; margin-bottom: 30px;">Booking</h1>
+            <div>
+                <h1 class="text-center text-[21px] mt-4">Бронирование мест</h1>
                 <div style="max-width: 50%; text-align: center; margin: auto;">
                     <form action="classes/booking.class.php" method="POST">
 
@@ -78,8 +78,8 @@ require "header.php"
 
                         ?>
                                 <div class="form-group">
-                                    <select class="custom-select" id="inputGroupSelectCustomer" name="customer" required>
-                                    <option value="" disabled selected>Select Customer</option>
+                                    <select class="border px-2 py-1 rounded" id="inputGroupSelectCustomer" name="customer" required>
+                                    <option value="" disabled selected>Выберите пользователя</option>
                                     <?php
 
                                         if ($result1->num_rows > 0) {
@@ -106,22 +106,22 @@ require "header.php"
                         ?>
 
                         <div class="form-group">
-                            <select class="custom-select" id="inputGroupSelectMovie" name="movie" required>
+                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectMovie" name="movie" required>
                                 <option value="<?php echo $row['movieName']; ?>" selected><?php echo $row['movieName']; ?></option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="inputGroupSelectRoom" name="room" required>
+                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectRoom" name="room" required>
                                 <option value="<?php echo $row['roomName']; ?>" selected><?php echo $row['roomName']; ?></option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="inputGroupSelectDate" name="date" required>
+                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectDate" name="date" required>
                                 <option value="<?php echo $row['startDate']; ?>" selected><?php echo $row['startDate']; ?></option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="inputGroupSelectTime" name="hours" required>
+                            <select class="border px-2 py-1 rounded m-2" id="inputGroupSelectTime" name="hours" required>
                                 <option value="<?php echo $row['startHours']; ?>" selected><?php echo $row['startHours']; ?></option>
                             </select>
                         </div>
@@ -130,7 +130,7 @@ require "header.php"
 
                             </div>
                         </div>
-                        <div style="text-align: left;"><button type="submit" class="btn btn-warning btn-lg btn-block" name="<?php echo $buttonName; ?>">Book Ticket</button></div>
+                        <div style="text-align: left;"><button type="submit" class="bg-[#60B1DE] rounded-[8px] text-white px-4 mt-4 py-2 hover:bg-[#59A1CA] text-sm" name="<?php echo $buttonName; ?>">Забронировать</button></div>
                     </form>
                 </div>
             </div>
@@ -158,7 +158,7 @@ require "header.php"
             $result2 = $conn->query($query2);
             $row2 = mysqli_fetch_assoc($result2); ?>
 
-            <div style="color: white;">
+            <div>
                 <h1 style="text-align: center; margin-bottom: 30px;">Update Ticket</h1>
                 <div style="max-width: 50%; text-align: center; margin: auto;">
                     <form action="classes/booking.class.php" method="POST">
@@ -222,8 +222,8 @@ require "header.php"
 
         ?>
 
-            <div style="color: white;">
-                <h1 class="title" style="text-align: center; margin-bottom: 30px;">Booking</h1>
+            <div>
+                <h1 class="text-center text-[21px] mt-4">Бронирование мест</h1>
                 <div style="max-width: 50%; text-align: center; margin: auto;">
                     <form action="classes/booking.class.php" method="post">
 
@@ -243,8 +243,8 @@ require "header.php"
 
                         ?>
                                 <div class="form-group">
-                                    <select class="custom-select" id="inputGroupSelectCustomer" name="customer" required>
-                                    <option value="" disabled selected>Select Customer</option>
+                                    <select class="border px-2 py-1 rounded" id="inputGroupSelectCustomer" name="customer" required>
+                                    <option value="" disabled selected>Выберите пользователя</option>
                                     <?php
 
                                         if ($result1->num_rows > 0) {
@@ -271,8 +271,8 @@ require "header.php"
                         ?>
 
                         <div class="form-group">
-                            <select class="custom-select" id="inputGroupSelectMovie" name="movie" required>
-                                <option value="" disabled selected>Select Movie</option>
+                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectMovie" name="movie" required>
+                                <option value="" disabled selected>Выберите фильм</option>
                                 <?php
                                 if ($result->num_rows > 0) {
 
@@ -286,20 +286,20 @@ require "header.php"
                         </div>
 
                         <div class="form-group">
-                            <select class="custom-select" id="inputGroupSelectRoom" name="room" required>
+                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectRoom" name="room" required>
                                 <!-- We need this to be selected and have a value for a php check -->
-                                <option value="nothing" selected>Select Room</option>
+                                <option value="nothing" selected>Выберите зал</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <select class="custom-select" id="inputGroupSelectDate" name="date" required>
-                                <option value="" disabled selected>Select Date</option>
+                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectDate" name="date" required>
+                                <option value="" disabled selected>Дата</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="inputGroupSelectTime" name="hours" required>
-                                <option value="" disabled selected>Select Time</option>
+                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectTime" name="hours" required>
+                                <option value="" disabled selected>Время</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -308,7 +308,7 @@ require "header.php"
                             </div>
                         </div>
                         <div style="text-align: left;">
-                            <button type="submit" class="btn btn-warning btn-lg btn-block" name="<?php echo $buttonName; ?>">Book Ticket</button>
+                            <button type="submit" class="bg-[#60B1DE] rounded-[8px] text-white px-4 mt-4 py-2 hover:bg-[#59A1CA] text-sm" name="<?php echo $buttonName; ?>">Забронировать</button>
                         </div>
                     </form>
 
