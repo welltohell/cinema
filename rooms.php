@@ -95,7 +95,7 @@ require "header.php";
           }
         } else {
 
-          echo '<h3 style="color: white; text-align: center;">No rooms are opened!</h3>';
+          echo '<h3 style="text-align: center;">No rooms are opened!</h3>';
         }
 
         ?>

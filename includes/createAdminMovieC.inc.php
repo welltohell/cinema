@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 //connecting to database
 include "includes/connectDB.inc.php";
@@ -8,34 +8,32 @@ $query = "SELECT * FROM movies";
 $result = $conn->query($query);
 $row = mysqli_fetch_assoc($result);
 
-if ($result->num_rows > 0){
-    
-    foreach($result as $row){
+if ($result->num_rows > 0) {
 
-?>
+  foreach ($result as $row) {
 
-<div class="card mb-3" style="max-width: 540px; margin-bottom: 20px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <?php echo '<img src="data:image;base64,' . base64_encode($row['movieImage']) .'" class="card-img-top">'; ?>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"><?php echo $row['movieName']; ?></h5>
-        <p class="card-text" style="color: black;"><?php echo $row['movieDescription']; ?></p>
-        <a href="createMovie.php?editMovie=<?php echo $row['movie_id']; ?>" class="btn btn-info">Edit</a>
-        <a href="classes/movies.class.php?delete=<?php echo $row['movie_id']; ?>" class="btn btn-danger">Delete</a>
+    ?>
+
+    <div class="movie-card">
+      <?php echo '<img src="data:image;base64,' . base64_encode($row['movieImage']) . '" class="w-full h-[240px] object-fill object-left rounded-xl">'; ?>
+      <div class="py-2">
+        <div class="font-bold text-xl mb-2">
+          <?php echo $row['movieName']; ?>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <a href="createMovie.php?editMovie=<?php echo $row['movie_id']; ?>"
+          class="transition text-slate-400 border border-blue-200 px-2 py-1 rounded hover:text-black">Изменить</a>
+        <a href="classes/movies.class.php?delete=<?php echo $row['movie_id']; ?>"
+          class="transition border text-slate-400 border-red-200 px-2 py-1 rounded hover:text-black">Удалить</a>
       </div>
     </div>
-  </div>
-</div>
 
-
-<?php
-    }
+    <?php
+  }
 
 } else {
 
-    echo '<h3 style="color: white; text-align: center;">No movies</h3>';
+  echo '<h3 style="color: white; text-align: center;">No movies</h3>';
 
 }

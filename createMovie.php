@@ -73,12 +73,15 @@ else if ($url === "http://localhost/cinema/createMovie.php?movieEdited=success")
 }
 
 ?>
+    <h1 class="title my-4 text-center">Фильмы</h1>
 
-<div class="rowM">
+<div class="flex justify-between">
 
-    <div class="columnM">
+    
 
-    <h1 class="title" style="text-align: center; margin-bottom: 30px;">Movies</h1>
+    <div class="grid grid-cols-2 gap-8 px-4 overflow-y-auto h-[500px]">
+
+    
 
         <?php
 
@@ -88,7 +91,7 @@ else if ($url === "http://localhost/cinema/createMovie.php?movieEdited=success")
 
     </div>
 
-    <div class="columnM" style="color:white;">
+    <div class="w-[400px]">
 
 
     <?php 
@@ -104,54 +107,50 @@ else if ($url === "http://localhost/cinema/createMovie.php?movieEdited=success")
         $result = $conn->query($query);
         $row = mysqli_fetch_assoc($result);
     
-        echo '<h1 style="text-align: center; margin-bottom: 30px;">Update Movie</h1>
-        <div style="max-width: 50%; margin: auto; color: white;">
+        echo '<h1 class="text-black text-center mb-2">Изменить фильм</h1>
+        <div style="">
             <form action="classes/movies.class.php" method="POST" enctype="multipart/form-data">
             <input type="text" style="display: none;" name="movie_idH" value="' . $row['movie_id'] . '">
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Update movie title:</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" name="movieName"
+                    <input type="text" class="form-control appearance-none block w-full bg-gray-200 text-gray-700 border border-grey-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="formGroupExampleInput" name="movieName"
                         value="' . $row['movieName'] . '" required>
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Input a description:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                <div class="form-group my-4">
+                    <textarea class="form-control min-h-[200px] form-control appearance-none block w-full bg-gray-200 text-gray-700 border border-grey-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="exampleFormControlTextarea1" rows="3"
                      name="movieDescription" required>' . $row['movieDescription'] . '</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlFile1">Input Image of Movie:</label><br>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                As you pressed edit, you have to input the image again!
+                    <label for="exampleFormControlFile1">Выберите изображение:</label><br>
+                    <div class="text-red-400 max-w-[300px] my-2" role="alert">
+                Если вы меняете данные, изображение должно быть выбрано повторно!
                             </div>
                     <input type="file" class="form-control-file" id="exampleFormControlFile1" name="movieImage" required>
                 </div>
                 <div style="text-align: left;">
-                    <button type="submit" class="btn btn-warning btn-lg btn-block" name="submit-movieUP">Update Movie</button>
+                    <button type="submit" class="mt-4 text-white bg-[#60B1DE] hover:bg-[#59A1CA] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" name="submit-movieUP">Изменить</button>
                 </div>
             </form>
         </div>';
     
     } else {
 
-        echo '<h1 class="title" style="text-align: center; margin-bottom: 30px;">Create Movie</h1>
-        <div style="max-width: 50%; margin: auto; color: white;">
-            <form action="classes/movies.class.php" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Input movie title:</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" name="movieName"
-                        placeholder="Movie Name" required>
+        echo '<h1 class="title text-black text-center mb-2">Добавить фильм</h1>
+        <div style="">
+            <form class="text-black" action="classes/movies.class.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group mb-4">
+                    <input type="text" class="form-control appearance-none block w-full bg-gray-200 text-gray-700 border border-grey-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="formGroupExampleInput" name="movieName"
+                        placeholder="Название фильма" required>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Input a description:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                        placeholder="Movie Description" name="movieDescription" required></textarea>
+                    <textarea class="form-control appearance-none block w-full bg-gray-200 text-gray-700 border border-grey-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="exampleFormControlTextarea1" rows="3"
+                        placeholder="Описание" name="movieDescription" required></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">Input Image of Movie:</label>
+                <div class="form-group mt-4">
+                    <label for="exampleFormControlFile1">Выберите изображение:</label>
                     <input type="file" class="form-control-file" id="exampleFormControlFile1" name="movieImage" required>
                 </div>
                 <div style="text-align: left;">
-                    <button type="submit" class="btn btn-warning btn-lg btn-block" name="submit-movieCr">Create Movie</button>
+                    <button type="submit" class="mt-4 text-white bg-[#60B1DE] hover:bg-[#59A1CA] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" name="signup-submit-admin" name="submit-movieCr">Добавить</button>
                 </div>
             </form>
         </div>';
