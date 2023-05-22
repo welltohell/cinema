@@ -67,7 +67,7 @@ require "header.php";
         ?>
 
             <div class="max-w-sm rounded overflow-hidden shadow-lg">
-            <?php echo '<img src="data:image;base64,' . base64_encode($row['room_image']) . '" class="w-full">'; ?>
+            <?php echo '<img src="data:image;base64,' . base64_encode($row['room_image']) . '" class="w-full h-[200px] object-cover">'; ?>
               <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2"><?php echo $row['roomName']; ?></div>
                 <p class="text-gray-700 text-base">
