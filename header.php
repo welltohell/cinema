@@ -184,8 +184,8 @@ session_start();
 									<a href="addUser.php" class="px-2 hover:bg-slate-100">Добавить пользователя</a>
 									<a href="createMovie.php" class="px-2 hover:bg-slate-100">Добавить фильм</a>
 									<a href="createRoom.php" class="px-2 hover:bg-slate-100">Добавить зал</a>
-									<a href="createSchedule.php" class="px-2 hover:bg-slate-100">Добавить расписание</a>
-									<a href="schedules.php" class="px-2 hover:bg-slate-100">Расписание</a>
+									<a href="createSchedule.php" class="px-2 hover:bg-slate-100">Добавить сеанс</a>
+									<a href="schedules.php" class="px-2 hover:bg-slate-100">Сеансы</a>
 									<a href="bookings.php" class="px-2 hover:bg-slate-100">Брони</a>
 								</div>
 							</div>

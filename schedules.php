@@ -8,66 +8,47 @@ require "header.php";
 
 	if ($url === "http://localhost/cinema/schedules.php?scheduleCanceled=success") {
 
-        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-		Schedule canceled successfully!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>';
+        echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <span class="font-medium">Сеанс успешно отменен!</span>
+            </div>';
 
     } else if ($url === "http://localhost/cinema/schedules.php?scheduleCanceled=failed") {
 
-		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-		Schedule did not cancel, It is booked by a customer!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <span class="font-medium">Не удалось отменить сеанс, он забронирован!</span>
+      </div>';
 
 	} else if ($url === "http://localhost/cinema/schedules.php?scheduleEdited=success"){
 
-		echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		Schedule updated!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <span class="font-medium">Сеанс успешно изменен!</span>
+            </div>';
 
 	} else if ($url === "http://localhost/cinema/schedules.php?scheduleEdited=failed") {
 
-		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-		Schedule did not update, Unknown error occured!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <span class="font-medium">Не удалось обновить сеанс!</span>
+      </div>';
 
 	} else if ($url === "http://localhost/cinema/schedules.php?scheduleCompleted=success") {
 
-		echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-		Schedule completed!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <span class="font-medium">Сеанс успешно завершен!</span>
+            </div>';
 
 	} else if ($url === "http://localhost/cinema/schedules.php?scheduleCompleted=failed") {
 
-		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-		Schedule did not complete, as it is booked by a customer!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <span class="font-medium">Не удалось завершить сеанс, он забронирован!</span>
+      </div>';
 
 	}
 	
 	?>
 
-<div class="jumbotron">
-		<h1 class="title">Список расписаний</h1>
+    <div class="jumbotron mt-8">
+		<h1 class="title">Сеансы</h1>
 	</div>
-	
 	<div class="container-xl mt-4">
 
             
@@ -94,7 +75,7 @@ require "header.php";
                     Время
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Изменить
+                    Управление сеансом
                 </th>
             </tr>
         </thead>

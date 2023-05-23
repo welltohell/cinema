@@ -36,9 +36,9 @@ if ($result->num_rows > 0) {
                 <?php echo $row['startHours'];?></td>
                 </td>
                 <td class="px-6 py-4 flex gap-2">
-                    <a href="classes/schedules.class.php?completeSchedule=<?php echo $row['schedule_id']; ?>&date=<?php echo $row['startDate'];?>&time=<?php echo $row['startHours'];?>&room=<?php echo $row['roomName']; ?>" class="text-green-500">Complete</a>
-                    <a href="createSchedule.php?editSchedule=<?php echo $row['schedule_id']; ?>&date=<?php echo $row['startDate'];?>&time=<?php echo $row['startHours'];?>&room=<?php echo $row['roomName']; ?>" class="text-blue-500">Edit</a>
-                    <a href="classes/schedules.class.php?cancelSchedule=<?php echo $row['schedule_id'];?>&date=<?php echo $row['startDate'];?>&time=<?php echo $row['startHours'];?>&room=<?php echo $row['roomName']; ?>" class="text-red-500">Cancel</a>
+                    <a href="classes/schedules.class.php?completeSchedule=<?php echo $row['schedule_id']; ?>&date=<?php echo $row['startDate'];?>&time=<?php echo $row['startHours'];?>&room=<?php echo $row['roomName']; ?>" class="text-green-500">Завершить</a>
+                    <a href="createSchedule.php?editSchedule=<?php echo $row['schedule_id']; ?>&date=<?php echo $row['startDate'];?>&time=<?php echo $row['startHours'];?>&room=<?php echo $row['roomName']; ?>" class="text-blue-500">Изменить</a>
+                    <a href="classes/schedules.class.php?cancelSchedule=<?php echo $row['schedule_id'];?>&date=<?php echo $row['startDate'];?>&time=<?php echo $row['startHours'];?>&room=<?php echo $row['roomName']; ?>" class="text-red-500">Отменить</a>
                 </td>
             </tr>
 

@@ -149,7 +149,7 @@ require "header.php";
     <div class="mt-[70px]">
 
         <div class="jumbotron flex items-center gap-2 mb-4" style="">
-            <h1 class="title uppercase text-[21px] italic font-bold">Расписание</h1>
+            <h1 class="title uppercase text-[21px] italic font-bold">Сеансы</h1>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
                 <path fill="currentColor" d="m12 20l-1.425-1.4l5.6-5.6H4v-2h12.175l-5.6-5.6L12 4l8 8l-8 8Z" />
             </svg>

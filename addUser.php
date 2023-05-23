@@ -22,8 +22,8 @@ if ($url === "http://localhost/cinema/addUser.php?userAdded=succes") {
 
 <main>
 
-    <div style="margin: 35px 0 35px 0 ;">
-        <h1 class="title" style="text-align: center; margin-bottom: 30px;">Добавить пользователя</h1>
+    <div class="mt-8">
+        <h1 class="title text-center mb-4">Добавить пользователя</h1>
         <div style="max-width: 50%; margin: auto;">
             <form action="classes/signup.class.php" method="post" id="signup-form" class="w-full max-w-lg">
                 <div class="flex flex-wrap -mx-3">

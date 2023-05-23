@@ -14,61 +14,43 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 //check creation and alert
 if ($url === "http://localhost/cinema/createMovie.php?movieCreated=success") {
 		
-		echo '<div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
-        Movie was created successfully!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <span class="font-medium">Фильм успешно добавлен!</span>
+            </div>';
 
 } else if ($url === "http://localhost/cinema/createMovie.php?movieCreated=failed") {
 
-    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Movie was not created, Unknown error occured!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+    echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    <span class="font-medium">Не удалось добавить фильм!</span>
+  </div>';
 
 } 
 //check deletion and alert
 else if ($url === "http://localhost/cinema/createMovie.php?movieDeleted=success") {
 
-    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        Movie deleted successfully!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+    echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+    <span class="font-medium">Фильм успешно удален!</span>
+        </div>';
 
 } else if ($url === "http://localhost/cinema/createMovie.php?movieDeleted=failed") {
 
-    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Movie was not deleted, it exists in a schedule!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+    echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    <span class="font-medium">Не удалось удалить фильм, он добавлен в сеансы!</span>
+  </div>';
 
 } 
 //check editetion and alert
 else if ($url === "http://localhost/cinema/createMovie.php?movieEdited=success") {
 
-    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Movie was edited successfully!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+    echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+    <span class="font-medium">Фильм успешно изменен!</span>
+        </div>';
 
 } else if ($url === "http://localhost/cinema/createMovie.php?movieEdited=failed") {
 
-    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Movie was not edited, Unknown error occured!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+    echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    <span class="font-medium">Не удалось изменить фильм!</span>
+  </div>';
 
 }
 

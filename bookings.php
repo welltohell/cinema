@@ -8,100 +8,90 @@ require "header.php";
 
 	if ($url === "http://localhost/cinema/bookings.php?bookingCanceled=success") {
 		
-		echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        Ticket was Canceled!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <span class="font-medium">Бронь отменена!</span>
+            </div>';
 
 	} else if ($url === "http://localhost/cinema/bookings.php?bookingCanceled=failed") {
 		
-		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Ticket was not canceled, Unknown error occured!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <span class="font-medium">Не удалось отменить бронь!</span>
+      </div>';
 
 	} else if ($url === "http://localhost/cinema/bookings.php?bookingCompleted=success") {
 
-		echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        Ticket completed!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <span class="font-medium">Бронирование прошло успешно!</span>
+            </div>';
 
 	} else if ($url === "http://localhost/cinema/bookings.php?bookingCompleted=failed") {
 
-		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Ticket did not complete, as it still in ongoing schedule!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <span class="font-medium">Бронь не завершена, так как находится в расписании!</span>
+      </div>';
 
 	} else if ($url === "http://localhost/cinema/bookings.php?bookingEdited=success") {
 		
-		echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        Ticked updated successfully!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <span class="font-medium">Бронь успешно обновлена!</span>
+            </div>';
 
 	} else if ($url === "http://localhost/cinema/bookings.php?bookingEdited=failed") {
 		
-		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Ticket was not updated, Unknown error occured!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <span class="font-medium">Не удалось обновить бронь!</span>
+      </div>';
 
 	} else if ($url === "http://localhost/cinema/bookings.php?bookingEdited=null") {
 		
-		echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Ticket was not updated, no seat was selected!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>';
+		echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <span class="font-medium">Не удалось обновить бронь! Не были выбраны места!</span>
+      </div>';
 
 	}
 	
 	?>
-	
-	<div class="container-xl">
-		<div class="jumbotron" style="background-color: #333333; margin-bottom: -45px;">
-			<h1 class="title" style="display: inline;">Customers Bookings</h1>
-            <div class="alert alert-warning alert-dismissible fade show" style="float: right;" role="alert">
-        Edit bookings one by one if a customer has booked 2 or more seats!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>
-		</div>
+	<div class="jumbotron mt-8">
+		<h1 class="title">Брони</h1>
+	</div>
+	<div class="container-xl mt-4">
 		
-		<table class="table table-bordered border-primary" style="color: white; border-color: #ff6600; margin-bottom: 150px; font-size:smaller;">
-			<tr>
-				<td><strong>ID</strong></td>
-				<td><strong>BOOKED ON</strong></td>
-				<td><strong>CUSTOMER</strong></td>
-				<td><strong>MOVIE</strong></td>
-				<td><strong>ROOM & SEATS</strong></td>
-				<td><strong>SCHEDULE DATE</strong></td>
-				<td><strong>MANAGE</strong></td>
-			</tr>
-
+		<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Id
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Дата
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Пользователь
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Фильм
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Место
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Сеанс
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Управление бронью
+                </th>
+            </tr>
+        </thead>
+        <tbody>
             <?php
 
-             include "includes/createAdminTable.inc.php";
+                include "includes/createAdminTable.inc.php";
 
             ?>
-
-			</table>
+        </tbody>
+    </table>
+</div>
 			
 			</div>
 			
