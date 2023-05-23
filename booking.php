@@ -1,6 +1,6 @@
 <?php
 require "header.php"
-?>
+    ?>
 
 <main>
 
@@ -33,7 +33,7 @@ require "header.php"
         <?php
         //check which button was pressed and display form
         if (isset($_GET['scheduleID'])) { //book now button
-
+        
             $id = $_GET['scheduleID'];
 
             //connecting to database
@@ -49,7 +49,7 @@ require "header.php"
             $row = mysqli_fetch_assoc($result); ?>
 
             <div>
-                <h1 class="text-center text-[21px] mt-4">Бронирование мест</h1>
+                <h1 class="text-center mt-4">Бронирование мест</h1>
                 <div style="max-width: 50%; text-align: center; margin: auto;">
                     <form action="classes/booking.class.php" method="POST">
 
@@ -59,61 +59,65 @@ require "header.php"
                             if ($_SESSION['userRole'] == "Administrator") {
 
                                 $buttonName = "submit-booking-admin"; //if its the admin we send data with this post name 
-                                
+                    
                                 include "includes/connectDB.inc.php";
 
                                 $selectUser = "SELECT userID, userEmail FROM users"; //select all users emails and ids
-
+                    
                                 $result1 = $conn->query($selectUser);
                                 $row1 = mysqli_fetch_assoc($result1);
 
-                        ?>
+                                ?>
                                 <div class="form-group">
                                     <select class="border px-2 py-1 rounded" id="inputGroupSelectCustomer" name="customer" required>
-                                    <option value="" disabled selected>Выберите пользователя</option>
-                                    <?php
+                                        <option value="" disabled selected>Выберите пользователя</option>
+                                        <?php
 
                                         if ($result1->num_rows > 0) {
 
                                             foreach ($result1 as $row1) { //display users emails with value their id
-
-                                            echo '<option value="'.$row1['userID'].'">'.$row1['userEmail'].'</option>';
+                            
+                                                echo '<option value="' . $row1['userID'] . '">' . $row1['userEmail'] . '</option>';
 
                                             }
                                         }
 
-                                    ?>
+                                        ?>
                                     </select>
                                 </div>
 
-                        <?php
+                                <?php
 
                             } else {
 
                                 $buttonName = "submit-booking"; //if its the customer we send data with this post name 
-
+                    
                             }
                         }
                         ?>
 
                         <div class="form-group">
                             <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectMovie" name="movie" required>
-                                <option value="<?php echo $row['movieName']; ?>" selected><?php echo $row['movieName']; ?></option>
+                                <option value="<?php echo $row['movieName']; ?>" selected><?php echo $row['movieName']; ?>
+                                </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectRoom" name="room" required>
-                                <option value="<?php echo $row['roomName']; ?>" selected><?php echo $row['roomName']; ?></option>
+                                <option value="<?php echo $row['roomName']; ?>" selected><?php echo $row['roomName']; ?>
+                                </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectDate" name="date" required>
-                                <option value="<?php echo $row['startDate']; ?>" selected><?php echo $row['startDate']; ?></option>
+                                <option value="<?php echo $row['startDate']; ?>" selected><?php echo $row['startDate']; ?>
+                                </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <select class="border px-2 py-1 rounded m-2" id="inputGroupSelectTime" name="hours" required>
-                                <option value="<?php echo $row['startHours']; ?>" selected><?php echo $row['startHours']; ?></option>
+                                <option value="<?php echo $row['startHours']; ?>" selected><?php echo $row['startHours']; ?>
+                                </option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -121,14 +125,16 @@ require "header.php"
 
                             </div>
                         </div>
-                        <div style="text-align: left;"><button type="submit" class="bg-[#60B1DE] rounded-[8px] text-white px-4 mt-4 py-2 hover:bg-[#59A1CA] text-sm" name="<?php echo $buttonName; ?>">Забронировать</button></div>
+                        <div style="text-align: left;"><button type="submit"
+                                class="bg-[#60B1DE] rounded-[8px] text-white px-4 mt-4 py-2 hover:bg-[#59A1CA] text-sm"
+                                name="<?php echo $buttonName; ?>">Забронировать</button></div>
                     </form>
                 </div>
             </div>
 
-        <?php
+            <?php
         } else if (isset($_GET['editBooking'])) { //edit button
-
+        
             $id = $_GET['editBooking'];
 
             include "includes/connectDB.inc.php";
@@ -149,60 +155,81 @@ require "header.php"
             $result2 = $conn->query($query2);
             $row2 = mysqli_fetch_assoc($result2); ?>
 
-            <div>
-                <h1 style="text-align: center; margin-bottom: 30px;">Update Ticket</h1>
-                <div style="max-width: 50%; text-align: center; margin: auto;">
-                    <form action="classes/booking.class.php" method="POST">
-                    <!-- send this old data without displaying them as we need them to manipulate the seats from database -->
-                        <input type="text" style="display: none;" name="booking_idH" value="<?php echo $row['booking_id']; ?>">
-                        <input type="text" style="display: none;" name="oldSeatID_H" value="<?php echo $_GET['seatID']; ?>">
-                        <input type="text" style="display: none;" name="oldDate_H" value="<?php echo $_GET['oldDate']; ?>">
-                        <input type="text" style="display: none;" name="oldTime_H" value="<?php echo $_GET['oldTime']; ?>">
-                        <input type="text" style="display: none;" name="oldRoom_H" value="<?php echo $_GET['oldRoom']; ?>">
-                        <input type="text" style="display: none;" name="oldSeat_H" value="<?php echo $_GET['oldSeat']; ?>">
-                        <div class="form-group">
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                To update a booking you have to select a movie first that is not selected. It can be the same movie if you want!
+                <div>
+                    <h1 class="text-center mt-8">Обновление билета</h1>
+                    <div class="max-w-[500px] mx-auto">
+                        <form action="classes/booking.class.php" method="POST">
+                            <!-- send this old data without displaying them as we need them to manipulate the seats from database -->
+                            <input type="text" style="display: none;" name="booking_idH"
+                                value="<?php echo $row['booking_id']; ?>">
+                            <input type="text" style="display: none;" name="oldSeatID_H" value="<?php echo $_GET['seatID']; ?>">
+                            <input type="text" style="display: none;" name="oldDate_H" value="<?php echo $_GET['oldDate']; ?>">
+                            <input type="text" style="display: none;" name="oldTime_H" value="<?php echo $_GET['oldTime']; ?>">
+                            <input type="text" style="display: none;" name="oldRoom_H" value="<?php echo $_GET['oldRoom']; ?>">
+                            <input type="text" style="display: none;" name="oldSeat_H" value="<?php echo $_GET['oldSeat']; ?>">
+                            <div class="form-group mt-4 flex items-end gap-4">
+                                <div class="relative w-2/3">
+                                    <select
+                                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="inputGroupSelectMovie" name="movie" required>
+                                        <option value="<?php echo $row['movieName']; ?>" selected><?php echo $row['movieName']; ?></option>
+                                        <?php
+                                        if ($result2->num_rows > 0) {
+
+                                            foreach ($result2 as $row2) {
+
+                                                echo '<option value="' . $row2['movieName'] . '">' . $row2['movieName'] . '</option>';
+                                            }
+                                        } ?>
+                                    </select>
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="form-group w-1/3">
+                                    <select
+                                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="inputGroupSelectRoom" name="room" required>
+                                        <option value="<?php echo $row['roomName']; ?>" selected><?php echo $row['roomName']; ?>
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
-                            <select class="custom-select" id="inputGroupSelectMovie" name="movie" required>
-                                <option value="<?php echo $row['movieName']; ?>" selected><?php echo $row['movieName']; ?></option>
-                                <?php
-                                if ($result2->num_rows > 0) {
-
-                                    foreach ($result2 as $row2) {
-
-                                        echo '<option value="' . $row2['movieName'] . '">' . $row2['movieName'] . '</option>';
-                                    }
-                                } ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="custom-select" id="inputGroupSelectRoom" name="room" required>
-                                <option value="<?php echo $row['roomName']; ?>" selected><?php echo $row['roomName']; ?></option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="custom-select" id="inputGroupSelectDate" name="date" required>
-                                <option value="<?php echo $row['startDate']; ?>" selected><?php echo $row['startDate']; ?></option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="custom-select" id="inputGroupSelectTime" name="hours" required>
-                                <option value="<?php echo $row['startHours']; ?>" selected><?php echo $row['startHours']; ?></option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <div class="theatre" id="createSeats">
-
+                            <div class="flex items-end gap-4 mt-4">
+                                <div class="form-group w-1/2">
+                                    <select
+                                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="inputGroupSelectDate" name="date" required>
+                                        <option value="<?php echo $row['startDate']; ?>" selected><?php echo $row['startDate']; ?> </option>
+                                    </select>
+                                </div>
+                                <div class="form-group w-1/2">
+                                    <select
+                                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="inputGroupSelectTime" name="hours" required>
+                                        <option value="<?php echo $row['startHours']; ?>" selected><?php echo $row['startHours']; ?>
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div style="text-align: left;"><button type="submit" class="btn btn-warning btn-lg btn-block" name="submit-bookingUp">Update Ticket</button></div>
-                    </form>
+                            <div class="form-group mt-4">
+                                <div class="theatre" id="createSeats">
+
+                                </div>
+                            </div>
+                            <div style="text-align: left;"><button type="submit" class="bg-[#60B1DE] rounded-[8px] text-white px-4 mt-4 py-2 hover:bg-[#59A1CA] text-sm"
+                                    name="submit-bookingUp">Обновить</button></div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        <?php
+            <?php
         } else { //no button pressed
-
+        
             include "includes/connectDB.inc.php";
 
             //select all the movies that are scheduled 
@@ -211,105 +238,134 @@ require "header.php"
             $result = $conn->query($query);
             $row = mysqli_fetch_assoc($result);
 
-        ?>
+            ?>
 
-            <div>
-                <h1 class="text-center text-[21px] mt-4">Бронирование мест</h1>
-                <div style="max-width: 50%; text-align: center; margin: auto;">
-                    <form action="classes/booking.class.php" method="post">
+                <div>
+                    <h1 class="text-center mt-8">Бронирование мест</h1>
+                    <div class="max-w-[500px] mx-auto mt-4">
+                        <form action="classes/booking.class.php" method="post">
 
-                    <?php
-                        //check if administrator is booking and display one more field for the customer input
-                        if (isset($_SESSION['userId'])) {
-                            if ($_SESSION['userRole'] == "Administrator") {
+                            <?php
+                            //check if administrator is booking and display one more field for the customer input
+                            if (isset($_SESSION['userId'])) {
+                                if ($_SESSION['userRole'] == "Administrator") {
 
-                                $buttonName = "submit-booking-admin"; //if its the admin we send data with this post name 
-                                
-                                include "includes/connectDB.inc.php";
+                                    $buttonName = "submit-booking-admin"; //if its the admin we send data with this post name 
+                        
+                                    include "includes/connectDB.inc.php";
 
-                                $selectUser = "SELECT userID, userEmail, userFirstName, userLastName FROM users"; //select all users emails and ids
-
-                                $result1 = $conn->query($selectUser);
-                                $row1 = mysqli_fetch_assoc($result1);
-
-                        ?>
-                                <div class="form-group">
-                                    <select class="border px-2 py-1 rounded" id="inputGroupSelectCustomer" name="customer" required>
-                                    <option value="" disabled selected>Выберите пользователя</option>
-                                    <?php
-
-                                        if ($result1->num_rows > 0) {
-
-                                            foreach ($result1 as $row1) { //display users emails with value their id
-
-                                            echo '<option value="'.$row1['userID'].'">'.$row1['userEmail'].'</option>';
-
-                                            }
-                                        }
+                                    $selectUser = "SELECT userID, userEmail, userFirstName, userLastName FROM users"; //select all users emails and ids
+                        
+                                    $result1 = $conn->query($selectUser);
+                                    $row1 = mysqli_fetch_assoc($result1);
 
                                     ?>
+                                    <div class="form-group">
+                                        <div class="relative">
+                                            <select
+                                                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                id="inputGroupSelectCustomer" name="customer" required>
+                                                <option value="" disabled selected>Выберите пользователя</option>
+                                                <?php
+
+                                                if ($result1->num_rows > 0) {
+
+                                                    foreach ($result1 as $row1) { //display users emails with value their id
+                                    
+                                                        echo '<option value="' . $row1['userID'] . '">' . $row1['userEmail'] . '</option>';
+
+                                                    }
+                                                }
+
+                                                ?>
+                                            </select>
+                                            <div
+                                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20">
+                                                    <path
+                                                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <?php
+
+                                } else {
+
+                                    $buttonName = "submit-booking"; //if its the customer we send data with this post name 
+                        
+                                }
+                            }
+                            ?>
+
+                            <div class="form-group mt-4 flex items-end gap-4">
+                                <div class="relative w-2/3">
+                                    <select
+                                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="inputGroupSelectMovie" name="movie" required>
+                                        <option value="" disabled selected>Выберите фильм</option>
+                                        <?php
+                                        if ($result->num_rows > 0) {
+
+                                            foreach ($result as $row) {
+
+                                                echo '<option value="' . $row['movieName'] . '">' . $row['movieName'] . '</option>';
+                                            }
+                                        } ?>
+
+                                    </select>
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="w-1/3">
+                                    <select
+                                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="inputGroupSelectRoom" name="room" required>
+                                        <!-- We need this to be selected and have a value for a php check -->
+                                        <option value="nothing" selected>Зал</option>
                                     </select>
                                 </div>
-
-                        <?php
-
-                            } else {
-
-                                $buttonName = "submit-booking"; //if its the customer we send data with this post name 
-
-                            }
-                        }
-                        ?>
-
-                        <div class="form-group">
-                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectMovie" name="movie" required>
-                                <option value="" disabled selected>Выберите фильм</option>
-                                <?php
-                                if ($result->num_rows > 0) {
-
-                                    foreach ($result as $row) {
-
-                                        echo '<option value="' . $row['movieName'] . '">' . $row['movieName'] . '</option>';
-                                    }
-                                } ?>
-
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectRoom" name="room" required>
-                                <!-- We need this to be selected and have a value for a php check -->
-                                <option value="nothing" selected>Выберите зал</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectDate" name="date" required>
-                                <option value="" disabled selected>Дата</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectTime" name="hours" required>
-                                <option value="" disabled selected>Время</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <div class="theatre" id="createSeats">
-
                             </div>
-                        </div>
-                        <div style="text-align: left;">
-                            <button type="submit" class="bg-[#60B1DE] rounded-[8px] text-white px-4 mt-4 py-2 hover:bg-[#59A1CA] text-sm" name="<?php echo $buttonName; ?>">Забронировать</button>
-                        </div>
-                    </form>
 
-                <?php
-            }
+                            <div class="form-group mt-4 flex items-end gap-4">
+                                <select
+                                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="inputGroupSelectDate" name="date" required>
+                                    <option value="" disabled selected>Дата</option>
+                                </select>
+                                <select
+                                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="inputGroupSelectTime" name="hours" required>
+                                    <option value="" disabled selected>Время</option>
+                                </select>
+                            </div>
+                            <div class="form-group mt-4">
+                                <div class="theatre" id="createSeats">
 
-                ?>
+                                </div>
+                            </div>
+                            <div style="text-align: left;">
+                                <button type="submit"
+                                    class="bg-[#60B1DE] rounded-[8px] text-white px-4 mt-4 py-2 hover:bg-[#59A1CA] text-sm"
+                                    name="<?php echo $buttonName; ?>">Забронировать</button>
+                            </div>
+                        </form>
 
-                </div>
+                    <?php
+        }
+
+        ?>
+
             </div>
+        </div>
     </div>
 
 </main>
@@ -318,4 +374,4 @@ require "header.php"
 
 <?php
 require "footer.php"
-?>
+    ?>
