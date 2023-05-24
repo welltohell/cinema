@@ -14,10 +14,10 @@ if ($result->num_rows > 0) {
 
     ?>
 
-    <div class="movie-card">
+    <div class="movie-card w-min">
       <?php echo '<img src="data:image;base64,' . base64_encode($row['movieImage']) . '" class="w-full h-[240px] object-fill object-left rounded-xl">'; ?>
       <div class="py-2">
-        <div class="font-bold text-xl mb-2">
+        <div class="font-bold text-xl mb-2 h-[80px]">
           <?php echo $row['movieName']; ?>
         </div>
       </div>
