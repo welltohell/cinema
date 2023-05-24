@@ -49,8 +49,8 @@ require "header.php"
             $row = mysqli_fetch_assoc($result); ?>
 
             <div>
-                <h1 class="text-center mt-4">Бронирование мест</h1>
-                <div style="max-width: 50%; text-align: center; margin: auto;">
+                <h1 class="text-center mt-8">Бронирование мест</h1>
+                <div class="max-w-[500px] mx-auto mt-4">
                     <form action="classes/booking.class.php" method="POST">
 
                         <?php
@@ -69,21 +69,33 @@ require "header.php"
 
                                 ?>
                                 <div class="form-group">
-                                    <select class="border px-2 py-1 rounded" id="inputGroupSelectCustomer" name="customer" required>
-                                        <option value="" disabled selected>Выберите пользователя</option>
-                                        <?php
+                                    <div class="relative">
+                                        <select
+                                            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                            id="inputGroupSelectCustomer" name="customer" required>
+                                            <option value="" disabled selected>Выберите пользователя</option>
+                                            <?php
 
-                                        if ($result1->num_rows > 0) {
+                                            if ($result1->num_rows > 0) {
 
-                                            foreach ($result1 as $row1) { //display users emails with value their id
-                            
-                                                echo '<option value="' . $row1['userID'] . '">' . $row1['userEmail'] . '</option>';
+                                                foreach ($result1 as $row1) { //display users emails with value their id
+                                
+                                                    echo '<option value="' . $row1['userID'] . '">' . $row1['userEmail'] . '</option>';
 
+                                                }
                                             }
-                                        }
 
-                                        ?>
-                                    </select>
+                                            ?>
+                                        </select>
+                                        <div
+                                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20">
+                                                <path
+                                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <?php
@@ -96,31 +108,69 @@ require "header.php"
                         }
                         ?>
 
-                        <div class="form-group">
-                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectMovie" name="movie" required>
-                                <option value="<?php echo $row['movieName']; ?>" selected><?php echo $row['movieName']; ?>
-                                </option>
-                            </select>
+                        <div class="form-group mt-4 flex items-end gap-4">
+                            <div class="relative w-2/3">
+                                <select
+                                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="inputGroupSelectMovie" name="movie" required>
+                                    <option value="<?php echo $row['movieName']; ?>" selected><?php echo $row['movieName']; ?></option>
+                                </select>
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="w-1/3">
+                                <select
+                                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="inputGroupSelectRoom" name="room" required>
+                                    <option value="<?php echo $row['roomName']; ?>" selected><?php echo $row['roomName']; ?>
+                                    </option>
+                                </select>
+                            </div>
+
                         </div>
-                        <div class="form-group">
-                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectRoom" name="room" required>
-                                <option value="<?php echo $row['roomName']; ?>" selected><?php echo $row['roomName']; ?>
-                                </option>
-                            </select>
+
+                        <div class="form-group mt-4 flex items-end gap-4">
+                            <div class="form-group w-full">
+                                <select
+                                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="inputGroupSelectDate" name="date" required>
+                                    <option value="<?php echo $row['startDate']; ?>" selected><?php echo $row['startDate']; ?></option>
+                                </select>
+                            </div>
+                            <div class="form-group w-full">
+                                <select
+                                    class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="inputGroupSelectTime" name="hours" required>
+                                    <option value="<?php echo $row['startHours']; ?>" selected><?php echo $row['startHours']; ?>
+                                    </option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <select class="border px-2 py-1 rounded mt-2" id="inputGroupSelectDate" name="date" required>
-                                <option value="<?php echo $row['startDate']; ?>" selected><?php echo $row['startDate']; ?>
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="border px-2 py-1 rounded m-2" id="inputGroupSelectTime" name="hours" required>
-                                <option value="<?php echo $row['startHours']; ?>" selected><?php echo $row['startHours']; ?>
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
+                        <div class="form-group mt-4">
+                            <div id="teatre-vision">
+                                <svg width="500" height="88" viewBox="0 0 1028 88" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 88V35C2 35 195 2 514 2C833 2 1026 35 1026 35V88H2Z"
+                                        fill="url(#paint0_linear)" style=""></path>
+                                    <path d="M2 35C2 35 193 2.5 514 2.5C835 2.5 1026 35 1026 35" stroke="#60B1DE"
+                                        stroke-width="4" stroke-linecap="round"></path>
+                                    <defs>
+                                        <linearGradient id="paint0_linear" x1="514" y1="2" x2="514" y2="69.5"
+                                            gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#60B1DE"></stop>
+                                            <stop offset=".01" stop-color="#60B1DE" stop-opacity=".5"></stop>
+                                            <stop offset="1" stop-color="#2A2A2A" stop-opacity="0"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+
                             <div class="theatre" id="createSeats">
 
                             </div>
@@ -222,7 +272,8 @@ require "header.php"
 
                                 </div>
                             </div>
-                            <div style="text-align: left;"><button type="submit" class="bg-[#60B1DE] rounded-[8px] text-white px-4 mt-4 py-2 hover:bg-[#59A1CA] text-sm"
+                            <div style="text-align: left;"><button type="submit"
+                                    class="bg-[#60B1DE] rounded-[8px] text-white px-4 mt-4 py-2 hover:bg-[#59A1CA] text-sm"
                                     name="submit-bookingUp">Обновить</button></div>
                         </form>
                     </div>
@@ -348,7 +399,27 @@ require "header.php"
                                 </select>
                             </div>
                             <div class="form-group mt-4">
+                                <div id="teatre-vision" class="hidden">
+                                    <svg width="500" height="88" viewBox="0 0 1028 88" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 88V35C2 35 195 2 514 2C833 2 1026 35 1026 35V88H2Z"
+                                            fill="url(#paint0_linear)" style=""></path>
+                                        <path d="M2 35C2 35 193 2.5 514 2.5C835 2.5 1026 35 1026 35" stroke="#60B1DE"
+                                            stroke-width="4" stroke-linecap="round"></path>
+                                        <defs>
+                                            <linearGradient id="paint0_linear" x1="514" y1="2" x2="514" y2="69.5"
+                                                gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#60B1DE"></stop>
+                                                <stop offset=".01" stop-color="#60B1DE" stop-opacity=".5"></stop>
+                                                <stop offset="1" stop-color="#2A2A2A" stop-opacity="0"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+
                                 <div class="theatre" id="createSeats">
+
+
 
                                 </div>
                             </div>
@@ -370,7 +441,8 @@ require "header.php"
 
 </main>
 
-<script src="ajaxTicket.js"></script> <!-- link js file with ajax -->
+<script src="ajaxTicket.js"></script>
+<!-- link js file with ajax -->
 
 <?php
 require "footer.php"
