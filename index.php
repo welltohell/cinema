@@ -131,9 +131,9 @@ require "header.php";
             </p>
             <?php
             if (isset($_SESSION['userId'])) {
-                echo '<button class="bg-[#A3D8F5] text-white max-w-[150px] p-2 rounded text-[14px] hover:bg-[#59A1CA] transition-all">
+                echo '<a href="booking.php" class="bg-[#A3D8F5] text-center text-white max-w-[150px] p-2 rounded text-[14px] hover:bg-[#59A1CA] transition-all">
                 Забронировать
-            </button>';
+            </a>';
             } else {
                 echo '<p class="text-[18px] leading-[25px] max-w-[480px]">
                 Зарегистрируйтесь или войдите в свой аккаунт и бронируйте места прямо сейчас!
