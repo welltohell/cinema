@@ -4,30 +4,45 @@ require "header.php";
 
 <main>
 
-<div class="jumbotron" style="background-color: #333333; margin-bottom: -45px;">
-		<h1 class="title">Completed Schedules</h1>
+	<div class="jumbotron mt-8">
+		<h1 class="title">Завершенные сеансы</h1>
 	</div>
-	
-	<div class="container-xl">
-		
-		<table class="table table-bordered border-primary" style="color: white; border-color: #ff6600; margin-bottom: 150px; font-size: smaller;">
-			<tr>
-				<td><strong>ID</strong></td>
-				<td><strong>MOVIE</strong></td>
-				<td><strong>ROOM</strong></td>
-                <td><strong>PLAYING DATE</strong></td>
-                <td><strong>PLAYING TIME</strong></td>
-			</tr>
 
-            <?php
+	<div class="container-xl mt-4">
 
-             include "includes/createCompleSchTable.inc.php";
+		<div class="mt-4 relative overflow-x-auto shadow-md sm:rounded-lg">
+			<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+				<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+					<tr>
+						<th scope="col" class="px-6 py-3">
+							Id
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Фильм
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Зал
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Дата фильма
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Время фильма
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
 
-            ?>
+					include "includes/createCompleSchTable.inc.php";
+
+					?>
+				</tbody>
 
 			</table>
-			
-			</div>
+		</div>
+
+	</div>
 
 </main>
 

@@ -5,29 +5,44 @@ require "header.php";
 
 <main>
 
-<div class="container-xl">
-		<div class="jumbotron" style="background-color: #333333; margin-bottom: -45px;">
-			<h1 class="title">Customers Completed Bookings</h1>
+	<div class="container-xl mt-8">
+		<div class="jumbotron">
+			<h1 class="title">Завершенные бронирования</h1>
 		</div>
-		
-		<table class="table table-bordered border-primary" style="color: white; border-color: #ff6600; margin-bottom: 150px; font-size: smaller;">
-			<tr>
-				<td><strong>ID</strong></td>
-				<td><strong>CUSTOMER</strong></td>
-				<td><strong>MOVIE</strong></td>
-                <td><strong>ROOM & SEATS</strong></td>
-				<td><strong>SCHEDULE DATE</strong></td>
-			</tr>
 
-            <?php
+		<div class="mt-4 relative overflow-x-auto shadow-md sm:rounded-lg">
+			<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+				<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+					<tr>
+						<th scope="col" class="px-6 py-3">
+							Id
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Пользователь
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Фильм
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Место
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Дата
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
 
-             include "includes/createCompleBookTable.inc.php";
+					include "includes/createCompleBookTable.inc.php";
 
-            ?>
+					?>
+				</tbody>
 
 			</table>
-			
-			</div>
+		</div>
+
+	</div>
 
 </main>
 

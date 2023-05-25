@@ -2,8 +2,8 @@
 
 $servername = "localhost";
 $dbUsername = "root";
-$dbPassword = "";
-// $dbPassword = "root";
+// $dbPassword = "";
+$dbPassword = "root";
 $dbName = "cinema";
 
 //Create connection

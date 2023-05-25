@@ -20,13 +20,13 @@ if ($result->num_rows > 0) {
 ?>
 
 
-<tr>
-    <td><?php echo $row['canceled_bookingID']; ?></td>
-    <td><?php echo $row['c_Email']; ?></td>
-    <td><?php echo $row['movie']; ?></td>
-    <td><?php echo $row['room']; ?> , <?php echo $row['seat']; ?></td> 
-    <td><?php echo $row['s_date'];?> , <?php echo $row['s_time'];?></td>
-    <td><?php echo $row['cancelDate']; ?></td>
+<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+    <td class="px-6 py-4"><?php echo $row['canceled_bookingID']; ?></td>
+    <td class="px-6 py-4"><?php echo $row['c_Email']; ?></td>
+    <td class="px-6 py-4"><?php echo $row['movie']; ?></td>
+    <td class="px-6 py-4"><?php echo $row['room']; ?> , <?php echo $row['seat']; ?></td> 
+    <td class="px-6 py-4"><?php echo $row['s_date'];?> , <?php echo $row['s_time'];?></td>
+    <td class="px-6 py-4"><?php echo $row['cancelDate']; ?></td>
 </tr>
 
 
