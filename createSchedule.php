@@ -166,7 +166,7 @@ if ($url === "http://localhost/cinema/createSchedule.php?scheduleCreated=success
                         <div class="relative">
                             <select
                                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="inputGroupSelect01" name="sch_movieName" required>
+                                id="inputGroupSelect01" name="sch_movieRoom" required>
                                 <option disabled selected>Выберите зал</option>
                                 <?php
                                 if ($result2->num_rows > 0) {

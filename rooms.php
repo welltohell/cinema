@@ -13,35 +13,23 @@ require "header.php";
 
     if ($url === "http://localhost/cinema/rooms.php?roomDeleted=success") {
 
-      echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-      Room was deleted successfully!
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>';
+      echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+      <span class="font-medium">Зал успешно удален!</span>
+          </div>';
     } else if ($url === "http://localhost/cinema/rooms.php?roomDeleted=failed") {
 
-      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-      This room can not be deleted as it has a schedule, Please first delete the schedule!
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+      <span class="font-medium">Не удалось удалить зал, активный сеанс!</span>
     </div>';
     } else if ($url === "http://localhost/cinema/rooms.php?roomEdited=success") {
 
-      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-      Room was edited successfully!
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>';
+      echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+      <span class="font-medium">Зал успешно изменен!</span>
+          </div>';
     } else if ($url === "http://localhost/cinema/rooms.php?roomEdited=failed") {
 
-      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-      Room could not be edited, Unknown Error occured!
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      echo '<div style="max-width: fit-content;" class="mt-4 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+      <span class="font-medium">Не удалось изменить зал!</span>
     </div>';
     }
 

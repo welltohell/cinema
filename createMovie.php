@@ -132,7 +132,7 @@ else if ($url === "http://localhost/cinema/createMovie.php?movieEdited=success")
                     <input type="file" class="form-control-file" id="exampleFormControlFile1" name="movieImage" required>
                 </div>
                 <div style="text-align: left;">
-                    <button type="submit" class="mt-4 text-white bg-[#60B1DE] hover:bg-[#59A1CA] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" name="signup-submit-admin" name="submit-movieCr">Добавить</button>
+                    <button type="submit" class="mt-4 text-white bg-[#60B1DE] hover:bg-[#59A1CA] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" name="submit-movieCr">Добавить</button>
                 </div>
             </form>
         </div>';
